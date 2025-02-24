@@ -1,0 +1,17 @@
+CREATE TABLE cars (
+  brand VARCHAR(255),
+  model VARCHAR(255),
+  year INT
+);
+
+CREATE TABLE departments (
+  id,
+  name VARCHAR(255),
+);
+
+CREATE TABLE employee (
+  id,
+  name VARCHAR(255),
+  department_id INT,
+);
+
