@@ -1,4 +1,6 @@
 const client = require('.client.js');
+const { createDepartment } = require (`./departments.js`)
+
 const dropTables = async() => {
   try {
     await client.query(`DROP TABLE IF EXISTS departments;`);
@@ -7,7 +9,7 @@ const dropTables = async() => {
   }
 }
 
-const createTables = async() => {
+const createDepartmentTables = async() => {
   try {
     await client.query(`
       CREATE TABLE departments (
@@ -19,6 +21,10 @@ const createTables = async() => {
     console.error('Error creating tables:', error);
   }
 }
+
+await createDepartment('housewares','1');
+await createDepartment('clothing','2');
+await createDepartment('accessories','3');
 
 const createEmployeeTable = async() => {
   try {
@@ -32,6 +38,12 @@ const createEmployeeTable = async() => {
   } catch (error) {
     console.error('Error creating tables:', error);
   }
+
+  await createEmployee('Jack','2');
+  await createEmployee('Jill', '3');
+  await createEmployee('Vincent', '1');
+
+  
 }
 
 
@@ -41,4 +53,5 @@ const synncAndSeed = async() => {
   await createTables();
   await createEmployeeTable();
   await client.end();
+  await createDepartment();
 }
